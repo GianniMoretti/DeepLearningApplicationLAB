@@ -1,0 +1,32 @@
+# CIFAR10 Resnet18 Example
+# config.yaml
+
+# Project info
+model_name: "ResidualMLP_CIFAR10"
+database_name: "CIFAR10"
+use_wandb: True
+wand_project_name: "DLA_LAB_1"
+print_model: False                      # To print the model in the console
+
+# Project parameters
+database_path: "../dataset/CIFAR10/"
+seed: -1                                # Seed to replicate the run; if < 0, it is not set
+num_loader_workers: 8                   # CPU dataloader workers
+validation_size: 15                     # Validation size in %
+metric: "accuracy"                      # "accuracy", "f1", "precision", "recall", "auc" Only binary class
+early_stopping_mode: "Max"              # "None" to disable, "min" if monitoring loss (to minimize), or "max" if monitoring a metric to maximize (e.g., accuracy)
+early_stopping_patience: 10              # Maximum number of epochs without improvement
+early_stopping_delta: 0.005             # Minimum improvement margin considered significant
+
+# Checkpoint
+save_best_checkpoint: True              # Save the best model checkpoint
+delta_save_checkpoint: -1
+resume_checkpoint_path: "None"          # Path of the checkpoint to resume training from; "None" = starts from scratch
+
+# Learning hyperparameters
+optim_name: "SGD"                       # "SGD", "ADAM", "ADAMW"
+learning_rate: 0.005
+batch_size: 128
+epochs: 50
+weight_decay: 0.0001
+momentum: 0.9
